@@ -1,4 +1,4 @@
-data "aws_ssm_parameter" "ubuntu-focal" {
+data "aws_ssm_parameter" "ubuntu" {
   name = "/aws/service/canonical/ubuntu/server/${var.ubuntu_version}/stable/current/amd64/hvm/ebs-gp2/ami-id"
 }
 
@@ -34,7 +34,7 @@ resource "aws_security_group_rule" "this" {
 }
 
 resource "aws_instance" "this" {
-  ami           = data.aws_ami.ubuntu.id
+  ami           = data.aws_ssm_parameter.ubuntu.value
   instance_type = var.bastion_instance_type
 
   associate_public_ip_address = true
