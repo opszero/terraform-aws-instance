@@ -5,11 +5,11 @@ data "aws_ssm_parameter" "ubuntu-focal" {
 resource "aws_eip" "this" {
   instance = aws_instance.bastion.id
   vpc      = true
-  tags = var.tags
+  tags     = var.tags
 }
 
 resource "aws_security_group" "this" {
-  name        = "${var.bastion_name}"
+  name        = var.bastion_name
   description = "Security group for bastion"
 
   egress {
@@ -23,7 +23,7 @@ resource "aws_security_group" "this" {
 }
 
 resource "aws_security_group_rule" "this" {
-  for_each          = toset(var.ingress_cidrs)
+  for_each = toset(var.ingress_cidrs)
 
   cidr_blocks       = [each.key]
   from_port         = 22
@@ -39,7 +39,7 @@ resource "aws_instance" "this" {
 
   associate_public_ip_address = true
   subnet_id                   = var.subnet_id
-  vpc_security_group_ids      = concat(var.security_group_ids, [var.aws aws_security_group.this.id])
+  vpc_security_group_ids      = concat(var.security_group_ids, [aws_security_group.this.id])
 
   monitoring = true
 
