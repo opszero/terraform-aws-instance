@@ -39,7 +39,7 @@ resource "aws_instance" "this" {
 
   associate_public_ip_address = true
   subnet_id                   = var.subnet_id
-  vpc_security_group_ids      = concat(var.security_group_ids, var.aws aws_security_group.this.id)
+  vpc_security_group_ids      = concat(var.security_group_ids, [var.aws aws_security_group.this.id])
 
   monitoring = true
 
