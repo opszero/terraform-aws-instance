@@ -11,6 +11,7 @@ resource "aws_eip" "this" {
 resource "aws_security_group" "this" {
   name        = var.bastion_name
   description = "Security group for bastion"
+  vpc_id = var.vpc_id
 
   egress {
     from_port   = 0

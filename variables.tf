@@ -6,6 +6,7 @@ variable "ssh_keys" {
 variable "tags" {
   default = {}
 }
+variable "vpc_id" {}
 variable "subnet_id" {}
 variable "security_group_ids" {
   default = []
