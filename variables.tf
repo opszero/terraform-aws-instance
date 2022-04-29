@@ -3,14 +3,20 @@ variable "ssh_keys" {
   description = "SSH Keys to add to the image"
   default = []
 }
-variable "tags" {}
+variable "tags" {
+  default = {}
+}
 variable "subnet_id" {}
-variable "security_group_ids" {}
+variable "security_group_ids" {
+  default = []
+}
 variable "ubuntu_version" {
   default = "20.04"
 }
 
-variable "userdata" {}
+variable "userdata" {
+  default = ""
+}
 variable "volume_size" {
   default = 20
 }
