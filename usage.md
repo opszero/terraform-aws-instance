@@ -1,6 +1,18 @@
 # Bastion (AWS)
 
+## Deployment
 
+```sh
+terraform init
+terraform plan
+terraform apply -auto-approve
+```
+
+## Tier down
+
+```sh
+terraform destroy -auto-approve
+```
 ## Usage
 
 ``` sh
