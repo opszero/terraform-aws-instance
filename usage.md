@@ -1,5 +1,3 @@
-# Bastion (AWS)
-
 ## Deployment
 
 ```sh
