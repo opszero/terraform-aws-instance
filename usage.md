@@ -6,7 +6,7 @@ terraform plan
 terraform apply -auto-approve
 ```
 
-## Tier down
+## Teardown
 
 ```sh
 terraform destroy -auto-approve
