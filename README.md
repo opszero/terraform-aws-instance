@@ -6,14 +6,15 @@
 ```sh
 terraform init
 terraform plan
-terraform apply -auto-approve
+terraform apply
 ```
 
-## Tier down
+## Teardown
 
 ```sh
-terraform destroy -auto-approve
+terraform destroy
 ```
+
 ## Usage
 
 ``` sh
