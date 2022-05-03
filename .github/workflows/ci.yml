@@ -20,3 +20,4 @@ jobs:
         indention: 3
         git-push: true
         git-commit-message: "terraform-docs: automated action"
+        git-push-user-name: thaunghtike-share
