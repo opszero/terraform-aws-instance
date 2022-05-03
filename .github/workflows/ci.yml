@@ -18,3 +18,4 @@ jobs:
         output-file: test.md
         output-method: inject
         git-push: "true"
+        git-push-user-name: thaunghtike-share
