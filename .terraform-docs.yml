@@ -2,9 +2,6 @@ formatter: "markdown"
 
 version: ""
 
-header-from: ""
-footer-from: ""
-
 recursive:
   enabled: false
   path: modules
