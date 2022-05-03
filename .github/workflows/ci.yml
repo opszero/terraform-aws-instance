@@ -17,5 +17,4 @@ jobs:
         config-file: .terraform-docs.yml
         output-file: test.md
         output-method: inject
-        git-push: "true"
-        git-push-user-name: "thaunghtike-share"
+        git-push: true
