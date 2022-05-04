@@ -1,36 +1,4 @@
 <!-- BEGIN_TF_DOCS -->
-# Bastion (AWS)
-
-## Deployment
-
-```sh
-terraform init
-terraform plan
-terraform apply
-```
-
-## Teardown
-
-```sh
-terraform destroy
-```
-
-## Usage
-
-``` sh
-ssh-keygen -t rsa
-```
-
-
-``` sh
-module "bastion" {
-  source = "github.com/opszero/terraform-aws-bastion"
-
-  ssh_keys = [
-     "ssh-rsa ..."
-  ]
-}
-```
 ## Providers
 
 | Name | Version |
@@ -55,6 +23,7 @@ module "bastion" {
 
 | Name | Type |
 |------|------|
+| [aws_cloudwatch_metric_alarm.aws_bastion_cpu_threshold](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudwatch_metric_alarm) | resource |
 | [aws_eip.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/eip) | resource |
 | [aws_instance.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/instance) | resource |
 | [aws_security_group.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group) | resource |
@@ -65,4 +34,33 @@ module "bastion" {
 | Name | Description |
 |------|-------------|
 | <a name="output_public_ip"></a> [public\_ip](#output\_public\_ip) | n/a |
+## Deployment
+
+```sh
+terraform init
+terraform plan
+terraform apply -auto-approve
+```
+
+## Teardown
+
+```sh
+terraform destroy -auto-approve
+```
+## Usage
+
+``` sh
+ssh-keygen -t rsa
+```
+
+
+``` sh
+module "bastion" {
+  source = "github.com/opszero/terraform-aws-bastion"
+
+  ssh_keys = [
+     "ssh-rsa ..."
+  ]
+}
+```
 <!-- END_TF_DOCS -->
