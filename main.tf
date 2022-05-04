@@ -73,7 +73,7 @@ SCRIPT
 }
 
 resource "aws_cloudwatch_metric_alarm" "aws_bastion_cpu_threshold" {
-  alarm_name                = "aws-bastion-cpu-alarm"
+  alarm_name                = "${var.bastion_name}-cpu-alarm"
   comparison_operator       = "GreaterThanOrEqualToThreshold"
   evaluation_periods        = "2"
   metric_name               = "CPUUtilization"
@@ -85,9 +85,6 @@ resource "aws_cloudwatch_metric_alarm" "aws_bastion_cpu_threshold" {
   insufficient_data_actions = []
 
   dimensions = {
-    InstanceId = "i-0de645f8f8b6f4bd5"
-  }
-  tags = {
-    "KubespotEnvironment" = "testing"
+    InstanceId = aws_instance.this.id
   }
 }
