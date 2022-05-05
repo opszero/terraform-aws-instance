@@ -1,4 +1,33 @@
 <!-- BEGIN_TF_DOCS -->
+## Deployment
+
+```sh
+terraform init
+terraform plan
+terraform apply -auto-approve
+```
+
+## Teardown
+
+```sh
+terraform destroy -auto-approve
+```
+## Usage
+
+``` sh
+ssh-keygen -t rsa
+```
+
+
+``` sh
+module "bastion" {
+  source = "github.com/opszero/terraform-aws-bastion"
+
+  ssh_keys = [
+     "ssh-rsa ..."
+  ]
+}
+```
 ## Providers
 
 | Name | Version |
@@ -34,33 +63,4 @@
 | Name | Description |
 |------|-------------|
 | <a name="output_public_ip"></a> [public\_ip](#output\_public\_ip) | n/a |
-## Deployment
-
-```sh
-terraform init
-terraform plan
-terraform apply -auto-approve
-```
-
-## Teardown
-
-```sh
-terraform destroy -auto-approve
-```
-## Usage
-
-``` sh
-ssh-keygen -t rsa
-```
-
-
-``` sh
-module "bastion" {
-  source = "github.com/opszero/terraform-aws-bastion"
-
-  ssh_keys = [
-     "ssh-rsa ..."
-  ]
-}
-```
 <!-- END_TF_DOCS -->
