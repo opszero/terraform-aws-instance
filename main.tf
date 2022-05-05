@@ -45,7 +45,7 @@ resource "aws_instance" "this" {
   monitoring = true
 
   tags = var.tags
-
+  user_data_replace_on_change = true
   user_data = <<SCRIPT
 #!/bin/bash
 
