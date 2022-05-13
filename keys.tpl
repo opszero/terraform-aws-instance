@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# Keys
+touch /home/ubuntu/.ssh/authorized_keys
+echo "${ssh_key}" >> /home/ubuntu/.ssh/authorized_keys
+%{endfor~}
+chown ubuntu: /home/ubuntu/.ssh/authorized_keys
+chmod 0600 /home/ubuntu/.ssh/authorized_keys
+
+${userdata}
+
+echo 'echo "Ciphers aes128-ctr,aes192-ctr,aes256-ctr" | tee -a /etc/ssh/sshd_config' | tee -a /etc/rc.local
+echo 'echo "MACs hmac-sha1,hmac-sha2-256,hmac-sha2-512" | tee -a /etc/ssh/sshd_config' | tee -a /etc/rc.local
+echo 'systemctl reload ssh.service' | tee -a /etc/rc.local
+echo 'exit 0' | tee -a /etc/rc.local
+chmod +x /etc/rc.local
