@@ -1,3 +1,7 @@
+locals {
+  users = var.users
+}
+
 data "aws_ssm_parameter" "ubuntu" {
   name = "/aws/service/canonical/ubuntu/server/${var.ubuntu_version}/stable/current/amd64/hvm/ebs-gp2/ami-id"
 }
@@ -46,25 +50,7 @@ resource "aws_instance" "this" {
 
   tags = var.tags
   user_data_replace_on_change = true
-  user_data = <<SCRIPT
-#!/bin/bash
-
-# Keys
-touch /home/ubuntu/.ssh/authorized_keys
-%{for ssh_key in var.ssh_keys~}
-echo "${ssh_key}" >> /home/ubuntu/.ssh/authorized_keys
-%{endfor~}
-chown ubuntu: /home/ubuntu/.ssh/authorized_keys
-chmod 0600 /home/ubuntu/.ssh/authorized_keys
-
-${var.userdata}
-
-echo 'echo "Ciphers aes128-ctr,aes192-ctr,aes256-ctr" | tee -a /etc/ssh/sshd_config' | tee -a /etc/rc.local
-echo 'echo "MACs hmac-sha1,hmac-sha2-256,hmac-sha2-512" | tee -a /etc/ssh/sshd_config' | tee -a /etc/rc.local
-echo 'systemctl reload ssh.service' | tee -a /etc/rc.local
-echo 'exit 0' | tee -a /etc/rc.local
-chmod +x /etc/rc.local
-SCRIPT
+  user_data = data.template_cloudinit_config.config.rendered
 
   root_block_device {
     encrypted   = true
@@ -87,4 +73,46 @@ resource "aws_cloudwatch_metric_alarm" "aws_bastion_cpu_threshold" {
   dimensions = {
     InstanceId = aws_instance.this.id
   }
+}
+
+resource "aws_iam_policy" "ssh" {
+  count = var.ec2_connect_installed ? 1 : 0
+
+  name        = "ec2-instance-connect-ssh"
+  path        = "/"
+  description = "SSH EC2 Instance Connect Policy"
+
+  policy = <<EOF
+{
+    "Version": "2012-10-17",
+    "Statement": [
+      {
+        "Effect": "Allow",
+        "Action": "ec2-instance-connect:SendSSHPublicKey",
+        "Resource": [
+            "arn:aws:ec2:us-east-1:${data.aws_caller_identity.current.account_id}:instance/${aws_instance.x.id}"
+        ],
+        "Condition": {
+            "StringEquals": {
+                "ec2:osuser": "ubuntu"
+            }
+        }
+      },
+      {
+        "Effect": "Allow",
+        "Action": "ec2:DescribeInstances",
+        "Resource": [
+            "arn:aws:ec2:us-east-1:${data.aws_caller_identity.current.account_id}:instance/${aws_instance.x.id}"
+      },
+    ]
+}
+EOF
+}
+
+resource "aws_iam_policy_attachment" "ssh" {
+  count = var.ec2_connect_installed ? 1 : 0
+
+  name       = "ec2-instance-connect-ssh"
+  users      = local.users
+  policy_arn = aws_iam_policy.ssh[count.index].arn
 }
