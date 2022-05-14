@@ -1,5 +1,5 @@
 data "template_file" "ec2_connect" {
-  count = var.ec2_connect_installed ? 1 : 0
+  count = var.ec2_connect_enabled ? 1 : 0
 
   template = file("${path.module}/ec2_connect.sh")
 }
