@@ -10,7 +10,7 @@ data "template_cloudinit_config" "config" {
 
   part {
     content_type = "text/x-shellscript"
-    content      = data.template_file.keys.rendered
+    content      = templatefile("${path.module}/keys.tftpl", { userdata = var.user_data, ssh_keys = var.ssh_keys })
   }
 
   part {
