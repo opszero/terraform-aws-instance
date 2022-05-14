@@ -1,7 +1,3 @@
-locals {
-  users = var.users
-}
-
 data "aws_ssm_parameter" "ubuntu" {
   name = "/aws/service/canonical/ubuntu/server/${var.ubuntu_version}/stable/current/amd64/hvm/ebs-gp2/ami-id"
 }
@@ -73,46 +69,4 @@ resource "aws_cloudwatch_metric_alarm" "aws_bastion_cpu_threshold" {
   dimensions = {
     InstanceId = aws_instance.this.id
   }
-}
-
-resource "aws_iam_policy" "ssh" {
-  count = var.ec2_connect_installed ? 1 : 0
-
-  name        = "ec2-instance-connect-ssh"
-  path        = "/"
-  description = "SSH EC2 Instance Connect Policy"
-
-  policy = <<EOF
-{
-    "Version": "2012-10-17",
-    "Statement": [
-      {
-        "Effect": "Allow",
-        "Action": "ec2-instance-connect:SendSSHPublicKey",
-        "Resource": [
-            "arn:aws:ec2:us-east-1:${data.aws_caller_identity.current.account_id}:instance/${aws_instance.x.id}"
-        ],
-        "Condition": {
-            "StringEquals": {
-                "ec2:osuser": "ubuntu"
-            }
-        }
-      },
-      {
-        "Effect": "Allow",
-        "Action": "ec2:DescribeInstances",
-        "Resource": [
-            "arn:aws:ec2:us-east-1:${data.aws_caller_identity.current.account_id}:instance/${aws_instance.x.id}"
-      },
-    ]
-}
-EOF
-}
-
-resource "aws_iam_policy_attachment" "ssh" {
-  count = var.ec2_connect_installed ? 1 : 0
-
-  name       = "ec2-instance-connect-ssh"
-  users      = local.users
-  policy_arn = aws_iam_policy.ssh[count.index].arn
 }
