@@ -1,12 +1,3 @@
-data "template_file" "keys" {
-  vars = {
-    ssh_key = var.ssh_key
-    userdata = var.user_data
-  }
-
-  template = file("${path.module}/keys.tpl")
-}
-
 data "template_file" "ec2_connect" {
   count = var.ec2_connect_installed ? 1 : 0
 
