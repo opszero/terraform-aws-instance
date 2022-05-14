@@ -1,7 +1,7 @@
 
 variable "bastion_name" {}
 variable "ssh_keys" {
-  description = "SSH public key to add to the image"
+  description = "SSH public keys to add to the image"
   default     = []
 }
 variable "tags" {
