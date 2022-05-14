@@ -31,7 +31,7 @@ variable "instance_type" {
 
 variable "ingress_cidrs" {}
 
-variable "ec2_connect_installed" {
+variable "ec2_connect_enabled" {
   default = true
 }
 
