@@ -18,5 +18,3 @@ data "template_cloudinit_config" "config" {
     content      = data.template_file.ec2_connect[0].rendered
   }
 }
-
-data "aws_caller_identity" "current" {}
