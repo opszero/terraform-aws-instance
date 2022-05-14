@@ -2,6 +2,7 @@
 
 # Keys
 touch /home/ubuntu/.ssh/authorized_keys
+%{for ssh_key in ssh_keys~}
 echo "${ssh_key}" >> /home/ubuntu/.ssh/authorized_keys
 %{endfor~}
 chown ubuntu: /home/ubuntu/.ssh/authorized_keys
