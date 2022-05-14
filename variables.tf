@@ -1,8 +1,8 @@
 
 variable "bastion_name" {}
-variable "ssh_key" {
+variable "ssh_keys" {
   description = "SSH public key to add to the image"
-  default     = ""
+  default     = []
 }
 variable "tags" {
   default = {}
@@ -37,9 +37,4 @@ variable "ec2_connect_installed" {
 
 variable "user_data" {
   default = ""
-}
-
-variable "users" {
-  default     = []
-  description = "List of IAM users to attach ssh IAM policy"
 }
