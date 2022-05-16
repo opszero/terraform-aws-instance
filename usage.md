@@ -12,8 +12,20 @@ ssh-keygen -t rsa
 module "bastion" {
   source = "github.com/opszero/terraform-aws-bastion"
 
-  ssh_keys = [
-     "ssh-rsa ..."
-  ]
+  ssh_keys = [ "ssh-rsa ..." ]
+  ec2_connect_installed = true
 }
+```
+## Deployment
+
+```sh
+terraform init
+terraform plan
+terraform apply -auto-approve
+```
+
+## Teardown
+
+```sh
+terraform destroy -auto-approve
 ```
