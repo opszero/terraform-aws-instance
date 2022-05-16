@@ -46,7 +46,7 @@ resource "aws_instance" "this" {
 
   tags                        = var.tags
   user_data_replace_on_change = true
-  user_data                   = data.template_cloudinit_config.config.rendered
+  user_data                   = data.cloudinit_config.config.rendered
 
   root_block_device {
     encrypted   = true
