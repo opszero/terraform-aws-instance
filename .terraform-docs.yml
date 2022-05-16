@@ -11,11 +11,11 @@ sections:
   show: []
 
 content: |-
+    {{ include "./usage.md" }}
     {{ .Providers }}
     {{ .Inputs }}
     {{ .Resources }}
     {{ .Outputs }}
-    {{ include "./usage.md" }}
 output:
   file: README.md
   mode: inject
