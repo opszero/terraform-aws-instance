@@ -11,7 +11,7 @@ resource "aws_eip" "this" {
 resource "aws_security_group" "this" {
   name        = var.bastion_name
   description = "Security group for bastion"
-  vpc_id = var.vpc_id
+  vpc_id      = var.vpc_id
 
   egress {
     from_port   = 0
@@ -44,9 +44,9 @@ resource "aws_instance" "this" {
 
   monitoring = true
 
-  tags = var.tags
+  tags                        = var.tags
   user_data_replace_on_change = true
-  user_data = data.template_cloudinit_config.config.rendered
+  user_data                   = data.template_cloudinit_config.config.rendered
 
   root_block_device {
     encrypted   = true
