@@ -17,22 +17,35 @@ module "bastion" {
   ec2_connect_installed = true
 }
 ```
+## Deployment
+
+```sh
+terraform init
+terraform plan
+terraform apply -auto-approve
+```
+
+## Teardown
+
+```sh
+terraform destroy -auto-approve
+```
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | 4.13.0 |
-| <a name="provider_template"></a> [template](#provider\_template) | 2.2.0 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | n/a |
+| <a name="provider_template"></a> [template](#provider\_template) | n/a |
 ## Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_bastion_name"></a> [bastion\_name](#input\_bastion\_name) | n/a | `any` | n/a | yes |
-| <a name="input_ec2_connect_installed"></a> [ec2\_connect\_installed](#input\_ec2\_connect\_installed) | n/a | `bool` | `true` | no |
+| <a name="input_ec2_connect_enabled"></a> [ec2\_connect\_enabled](#input\_ec2\_connect\_enabled) | n/a | `bool` | `true` | no |
 | <a name="input_ingress_cidrs"></a> [ingress\_cidrs](#input\_ingress\_cidrs) | n/a | `any` | n/a | yes |
 | <a name="input_instance_type"></a> [instance\_type](#input\_instance\_type) | n/a | `string` | `"t3.micro"` | no |
 | <a name="input_security_group_ids"></a> [security\_group\_ids](#input\_security\_group\_ids) | n/a | `list` | `[]` | no |
-| <a name="input_ssh_keys"></a> [ssh\_key](#input\_ssh\_key) | SSH public key to add to the image | `List` | `[]` | no |
+| <a name="input_ssh_keys"></a> [ssh\_keys](#input\_ssh\_keys) | SSH public keys to add to the image | `list` | `[]` | no |
 | <a name="input_subnet_id"></a> [subnet\_id](#input\_subnet\_id) | n/a | `any` | n/a | yes |
 | <a name="input_tags"></a> [tags](#input\_tags) | n/a | `map` | `{}` | no |
 | <a name="input_ubuntu_version"></a> [ubuntu\_version](#input\_ubuntu\_version) | n/a | `string` | `"20.04"` | no |
@@ -50,9 +63,8 @@ module "bastion" {
 | [aws_security_group.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group) | resource |
 | [aws_security_group_rule.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group_rule) | resource |
 | [aws_ssm_parameter.ubuntu](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/ssm_parameter) | data source |
-| [template_cloudinit_config.config](https://registry.terraform.io/providers/hashicorp/template/2.2.0/docs/data-sources/cloudinit_config) | data source |
-| [template_file.ec2_connect](https://registry.terraform.io/providers/hashicorp/template/2.2.0/docs/data-sources/file) | data source |
-| [template_file.keys](https://registry.terraform.io/providers/hashicorp/template/2.2.0/docs/data-sources/file) | data source |
+| [template_cloudinit_config.config](https://registry.terraform.io/providers/hashicorp/template/latest/docs/data-sources/cloudinit_config) | data source |
+| [template_file.ec2_connect](https://registry.terraform.io/providers/hashicorp/template/latest/docs/data-sources/file) | data source |
 ## Outputs
 
 | Name | Description |
