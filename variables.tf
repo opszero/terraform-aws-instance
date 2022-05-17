@@ -1,3 +1,6 @@
+variable "ami_id" {
+  default = null
+}
 
 variable "bastion_name" {}
 variable "ssh_keys" {

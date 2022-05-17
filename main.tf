@@ -35,7 +35,7 @@ resource "aws_security_group_rule" "this" {
 }
 
 resource "aws_instance" "this" {
-  ami           = data.aws_ssm_parameter.ubuntu.value
+  ami           = var.ami_id != null ? var.ami_id : data.aws_ssm_parameter.ubuntu.value
   instance_type = var.instance_type
 
   associate_public_ip_address = true
