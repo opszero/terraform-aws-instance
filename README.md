@@ -35,7 +35,7 @@ terraform destroy -auto-approve
 | Name | Version |
 |------|---------|
 | <a name="provider_aws"></a> [aws](#provider\_aws) | n/a |
-| <a name="provider_template"></a> [template](#provider\_template) | n/a |
+| <a name="provider_cloudinit"></a> [cloudinit](#provider\_cloudinit) | n/a |
 ## Inputs
 
 | Name | Description | Type | Default | Required |
@@ -63,8 +63,7 @@ terraform destroy -auto-approve
 | [aws_security_group.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group) | resource |
 | [aws_security_group_rule.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group_rule) | resource |
 | [aws_ssm_parameter.ubuntu](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/ssm_parameter) | data source |
-| [template_cloudinit_config.config](https://registry.terraform.io/providers/hashicorp/template/latest/docs/data-sources/cloudinit_config) | data source |
-| [template_file.ec2_connect](https://registry.terraform.io/providers/hashicorp/template/latest/docs/data-sources/file) | data source |
+| [cloudinit_config.config](https://registry.terraform.io/providers/hashicorp/cloudinit/latest/docs/data-sources/config) | data source |
 ## Outputs
 
 | Name | Description |
