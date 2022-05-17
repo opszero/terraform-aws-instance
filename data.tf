@@ -4,7 +4,7 @@ data "cloudinit_config" "config" {
 
   part {
     content_type = "text/x-shellscript"
-    content      = templatefile("${path.module}/keys.tftpl", {
+    content = templatefile("${path.module}/keys.tftpl", {
       userdata = var.user_data,
       ssh_keys = var.ssh_keys
     })

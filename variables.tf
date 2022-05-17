@@ -38,3 +38,7 @@ variable "ec2_connect_enabled" {
 variable "user_data" {
   default = ""
 }
+
+variable "user_data_replace_on_change" {
+  default = false
+}

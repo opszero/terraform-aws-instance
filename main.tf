@@ -45,7 +45,7 @@ resource "aws_instance" "this" {
   monitoring = true
 
   tags                        = var.tags
-  user_data_replace_on_change = true
+  user_data_replace_on_change = var.user_data_replace_on_change
   user_data                   = data.cloudinit_config.config.rendered
 
   root_block_device {
