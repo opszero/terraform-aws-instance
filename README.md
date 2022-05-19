@@ -40,6 +40,7 @@ terraform destroy -auto-approve
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
+| <a name="input_ami_id"></a> [ami\_id](#input\_ami\_id) | n/a | `any` | `null` | no |
 | <a name="input_bastion_name"></a> [bastion\_name](#input\_bastion\_name) | n/a | `any` | n/a | yes |
 | <a name="input_ec2_connect_enabled"></a> [ec2\_connect\_enabled](#input\_ec2\_connect\_enabled) | n/a | `bool` | `true` | no |
 | <a name="input_ingress_cidrs"></a> [ingress\_cidrs](#input\_ingress\_cidrs) | n/a | `any` | n/a | yes |
@@ -50,6 +51,7 @@ terraform destroy -auto-approve
 | <a name="input_tags"></a> [tags](#input\_tags) | n/a | `map` | `{}` | no |
 | <a name="input_ubuntu_version"></a> [ubuntu\_version](#input\_ubuntu\_version) | n/a | `string` | `"20.04"` | no |
 | <a name="input_user_data"></a> [user\_data](#input\_user\_data) | n/a | `string` | `""` | no |
+| <a name="input_user_data_replace_on_change"></a> [user\_data\_replace\_on\_change](#input\_user\_data\_replace\_on\_change) | n/a | `bool` | `false` | no |
 | <a name="input_userdata"></a> [userdata](#input\_userdata) | n/a | `string` | `""` | no |
 | <a name="input_volume_size"></a> [volume\_size](#input\_volume\_size) | n/a | `number` | `20` | no |
 | <a name="input_vpc_id"></a> [vpc\_id](#input\_vpc\_id) | n/a | `any` | n/a | yes |
