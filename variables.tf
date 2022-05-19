@@ -45,6 +45,3 @@ variable "user_data" {
 variable "user_data_replace_on_change" {
   default = false
 }
-variable "prevent_destroy" {
-  default = false
-}

@@ -52,10 +52,6 @@ resource "aws_instance" "this" {
     encrypted   = true
     volume_size = var.volume_size
   }
-
-  lifecycle {
-    prevent_destroy = var.prevent_destroy
-  }
 }
 
 resource "aws_cloudwatch_metric_alarm" "aws_bastion_cpu_threshold" {
