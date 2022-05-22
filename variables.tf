@@ -1,47 +1,79 @@
 variable "ami_id" {
-  default = null
+  default     = null
+  type        = string
+  description = "The AMI ID of the bastion host"
 }
 
-variable "bastion_name" {}
+variable "bastion_name" {
+  description = "The name of the bastion host"
+  type        = string
+}
+
 variable "ssh_keys" {
   description = "SSH public keys to add to the image"
   default     = []
-}
-variable "tags" {
-  default = {}
+  type        = list(any)
 }
 
-variable "vpc_id" {}
-variable "subnet_id" {}
-variable "security_group_ids" {
-  default = []
+variable "tags" {
+  default     = {}
+  description = "A map of tags to assign to the resource"
+  type        = map(any)
 }
+
+variable "vpc_id" {
+  description = "The VPC ID to create security group for bastion host"
+  type        = string
+}
+
+variable "subnet_id" {
+  description = "The VPC subnet ID to launch in EC2 bastion host"
+  type        = string
+}
+
+variable "security_group_ids" {
+  default     = []
+  description = "A list of security group names to associate with."
+  type        = list(any)
+}
+
 variable "ubuntu_version" {
-  default = "20.04"
+  default     = "20.04"
+  description = "Ubuntu Server Version"
+  type        = string
 }
 
 variable "userdata" {
-  default = ""
+  default     = ""
+  description = "User data to provide when launching the instance"
+  type        = string
 }
 
 variable "volume_size" {
-  default = 20
+  default     = 20
+  description = "Size of the volume in gibibytes (GiB)"
+  type        = number
+
 }
 
 variable "instance_type" {
-  default = "t3.micro"
+  default     = "t3.micro"
+  description = "EC2 Instance Type of the bastion host"
+  type        = string
 }
 
-variable "ingress_cidrs" {}
-
-variable "ec2_connect_enabled" {
-  default = true
+variable "ingress_cidrs" {
+  description = "Configuration block for ingress rules"
 }
 
 variable "user_data" {
-  default = ""
+  default     = ""
+  description = "User data to provide when launching the instance"
+  type        = string
 }
 
 variable "user_data_replace_on_change" {
-  default = false
+  default     = false
+  description = "To recreate the instance when user_data is changed"
+  type        = bool
 }
