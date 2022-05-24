@@ -44,7 +44,7 @@ resource "aws_instance" "this" {
 
   monitoring = true
 
-  tags                        = merge(var.tags, {
+  tags = merge(var.tags, {
     Name = var.bastion_name
   })
   user_data_replace_on_change = var.user_data_replace_on_change
