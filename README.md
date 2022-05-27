@@ -14,7 +14,6 @@ module "bastion" {
   source = "github.com/opszero/terraform-aws-bastion"
 
   ssh_keys = [ "ssh-rsa ..." ]
-  ec2_connect_installed = true
 }
 ```
 
