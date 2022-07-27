@@ -1,5 +1,5 @@
 <!-- BEGIN_TF_DOCS -->
-# AWS Bastion
+# Bastion (AWS)
 
 AWS Bastion with multiple SSH Key support.
 
