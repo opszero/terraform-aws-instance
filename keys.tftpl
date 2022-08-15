@@ -17,11 +17,11 @@ echo 'exit 0' | tee -a /etc/rc.local
 chmod +x /etc/rc.local
 
 # Customer Keys 
-%{for user, keys in users~}
+%{for user, resource in users~}
 adduser --disabled-password --gecos '' ${user}
 mkdir -p /home/${user}/.ssh
 touch /home/${user}/.ssh/authorized_keys
-%{for key in keys.ssh-keys~}
+%{for key in resource.ssh-keys~}
 echo ${key} >> authorized_keys
 %{endfor~}
 mv authorized_keys /home/${user}/.ssh
