@@ -21,7 +21,7 @@ chmod +x /etc/rc.local
 adduser --disabled-password --gecos '' ${user}
 mkdir -p /home/${user}/.ssh
 touch /home/${user}/.ssh/authorized_keys
-%{for key in keys.ssh-key~}
+%{for key in keys.ssh-keys~}
 echo ${key} >> authorized_keys
 %{endfor~}
 mv authorized_keys /home/${user}/.ssh
