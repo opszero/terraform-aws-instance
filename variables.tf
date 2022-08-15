@@ -82,7 +82,7 @@ variable "users" {
   description = "Custom user accounts of the instance"
   default = {
     "retool" = {
-      ssh-key = []
+      ssh-keys = []
     }
   }
 }
