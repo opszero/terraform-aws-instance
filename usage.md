@@ -13,6 +13,14 @@ module "bastion" {
   source = "github.com/opszero/terraform-aws-bastion"
 
   ssh_keys = [ "ssh-rsa ..." ]
+  
+  users = {
+    "username" = {
+      ssh-keys = [
+         "ssh-rs ..."
+      ]
+    }
+  }
 }
 ```
 
