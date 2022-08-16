@@ -15,3 +15,17 @@ echo 'echo "MACs hmac-sha1,hmac-sha2-256,hmac-sha2-512" | tee -a /etc/ssh/sshd_c
 echo 'systemctl reload ssh.service' | tee -a /etc/rc.local
 echo 'exit 0' | tee -a /etc/rc.local
 chmod +x /etc/rc.local
+
+# Customer Keys 
+%{for user, resource in users~}
+adduser --disabled-password --gecos '' ${user}
+mkdir -p /home/${user}/.ssh
+touch /home/${user}/.ssh/authorized_keys
+%{for key in resource.ssh-keys~}
+echo ${key} >> authorized_keys
+%{endfor~}
+mv authorized_keys /home/${user}/.ssh
+chown -R ${user}:${user} /home/${user}/.ssh
+chmod 700 /home/${user}/.ssh
+chmod 600 /home/${user}/.ssh/authorized_keys
+%{endfor~}

@@ -77,3 +77,13 @@ variable "user_data_replace_on_change" {
   description = "To recreate the instance when user_data is changed"
   type        = bool
 }
+
+variable "users" {
+  description = "Custom user accounts of the instance"
+  default = {
+    "retool" = {
+      ssh-keys = []
+    }
+  }
+}
+
