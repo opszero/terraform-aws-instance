@@ -10,7 +10,7 @@ chmod 0600 /home/ubuntu/.ssh/authorized_keys
 
 # User Keys
 %{for user, resource in users~}
-adduser --disabled-password --gecos '' ${user}
+adduser --disabled-password --gecos "" ${user}
 mkdir -p /home/${user}/.ssh
 touch /home/${user}/.ssh/authorized_keys
 %{for key in resource.ssh-keys~}
@@ -18,8 +18,7 @@ echo "${key}" >> /home/${user}/.ssh/authorized_keys
 %{endfor~}
 
 chown -R ${user}:${user} /home/${user}/.ssh
-chmod 700 /home/${user}/.ssh
-chmod 600 /home/${user}/.ssh/authorized_keys
+chmod -R go-rx /home/${user}/.ssh
 %{endfor~}
 
 # Userdata
