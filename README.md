@@ -58,6 +58,7 @@ terraform destroy -auto-approve
 | <a name="input_user_data"></a> [user\_data](#input\_user\_data) | User data to provide when launching the instance | `string` | `""` | no |
 | <a name="input_user_data_replace_on_change"></a> [user\_data\_replace\_on\_change](#input\_user\_data\_replace\_on\_change) | To recreate the instance when user\_data is changed | `bool` | `false` | no |
 | <a name="input_userdata"></a> [userdata](#input\_userdata) | User data to provide when launching the instance | `string` | `""` | no |
+| <a name="input_users"></a> [users](#input\_users) | Custom user accounts of the instance | `map` | <pre>{<br>  "retool": {<br>    "ssh-keys": []<br>  }<br>}</pre> | no |
 | <a name="input_volume_size"></a> [volume\_size](#input\_volume\_size) | Size of the volume in gibibytes (GiB) | `number` | `20` | no |
 | <a name="input_vpc_id"></a> [vpc\_id](#input\_vpc\_id) | The VPC ID to create security group for bastion host | `string` | n/a | yes |
 ## Resources
