@@ -1,6 +1,6 @@
-# Bastion (AWS)
+# Instance (AWS)
 
-AWS Bastion with multiple SSH Key support.
+AWS Instance with multiple SSH Key support.
 
 ## Usage
 
