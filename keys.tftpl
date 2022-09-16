@@ -37,7 +37,7 @@ pip3 install botocore
 
 #mount efs 
 %{for filesystem, mount_path in efs_mounts~}
-mkdir ${mount_path.mount_path}
+mkdir -p ${mount_path.mount_path}
 mount -t efs -o tls ${filesystem}:/ ${mount_path.mount_path}
 %{endfor~}
 
