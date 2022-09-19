@@ -55,9 +55,9 @@ terraform destroy -auto-approve
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_ami_id"></a> [ami\_id](#input\_ami\_id) | The AMI ID of the bastion host | `string` | `null` | no |
-| <a name="input_bastion_name"></a> [bastion\_name](#input\_bastion\_name) | The name of the bastion host | `string` | n/a | yes |
 | <a name="input_ingress_cidrs"></a> [ingress\_cidrs](#input\_ingress\_cidrs) | Configuration block for ingress rules | `any` | n/a | yes |
 | <a name="input_instance_type"></a> [instance\_type](#input\_instance\_type) | EC2 Instance Type of the bastion host | `string` | `"t3.micro"` | no |
+| <a name="input_name"></a> [name](#input\_name) | The name of the bastion host | `string` | n/a | yes |
 | <a name="input_security_group_ids"></a> [security\_group\_ids](#input\_security\_group\_ids) | A list of security group names to associate with. | `list(any)` | `[]` | no |
 | <a name="input_ssh_keys"></a> [ssh\_keys](#input\_ssh\_keys) | SSH public keys to add to the image | `list(any)` | `[]` | no |
 | <a name="input_subnet_id"></a> [subnet\_id](#input\_subnet\_id) | The VPC subnet ID to launch in EC2 bastion host | `string` | n/a | yes |
