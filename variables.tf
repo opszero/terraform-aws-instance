@@ -4,7 +4,7 @@ variable "ami_id" {
   description = "The AMI ID of the bastion host"
 }
 
-variable "bastion_name" {
+variable "name" {
   description = "The name of the bastion host"
   type        = string
 }
