@@ -87,3 +87,14 @@ variable "users" {
   }
 }
 
+variable "efs_mounts" {
+  description = "EFS multiple mounts"
+  default     = {}
+  #"fs-09f8c986f1367012a" = {
+  #  mount_path = "/tmp/efs1"
+  #},
+  #"fs-0314bf3a3f8c0e652" = {
+  #  mount_path = "/tmp/efs2"
+  #}
+  #}
+}
