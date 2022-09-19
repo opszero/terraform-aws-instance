@@ -9,7 +9,7 @@ resource "aws_eip" "this" {
 }
 
 resource "aws_security_group" "this" {
-  name        = var.bastion_name
+  name        = var.name
   description = "Security group for bastion"
   vpc_id      = var.vpc_id
 
@@ -45,7 +45,7 @@ resource "aws_instance" "this" {
   monitoring = true
 
   tags = merge(var.tags, {
-    Name = var.bastion_name
+    Name = var.name
   })
   user_data_replace_on_change = var.user_data_replace_on_change
   user_data                   = data.cloudinit_config.config.rendered
@@ -57,7 +57,7 @@ resource "aws_instance" "this" {
 }
 
 resource "aws_cloudwatch_metric_alarm" "aws_bastion_cpu_threshold" {
-  alarm_name                = "${var.bastion_name}-cpu-alarm"
+  alarm_name                = "${var.name}-cpu-alarm"
   comparison_operator       = "GreaterThanOrEqualToThreshold"
   evaluation_periods        = "2"
   metric_name               = "CPUUtilization"
