@@ -1,6 +1,6 @@
-# Bastion (AWS)
+# Instance (AWS)
 
-AWS Bastion with multiple SSH Key support.
+AWS Instance with multiple SSH Key support.
 
 ## Usage
 
@@ -13,6 +13,14 @@ module "bastion" {
   source = "github.com/opszero/terraform-aws-bastion"
 
   ssh_keys = [ "ssh-rsa ..." ]
+  
+  users = {
+    "username" = {
+      ssh-keys = [
+         "ssh-rs ..."
+      ]
+    }
+  }
 }
 ```
 
