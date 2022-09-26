@@ -37,12 +37,6 @@ variable "security_group_ids" {
   type        = list(any)
 }
 
-variable "ubuntu_version" {
-  default     = "20.04"
-  description = "Ubuntu Server Version"
-  type        = string
-}
-
 variable "userdata" {
   default     = ""
   description = "User data to provide when launching the instance"

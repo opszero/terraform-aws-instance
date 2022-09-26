@@ -1,7 +1,3 @@
-data "aws_ssm_parameter" "ubuntu" {
-  name = "/aws/service/canonical/ubuntu/server/${var.ubuntu_version}/stable/current/amd64/hvm/ebs-gp2/ami-id"
-}
-
 resource "aws_eip" "this" {
   instance = aws_instance.this.id
   vpc      = true
@@ -35,7 +31,7 @@ resource "aws_security_group_rule" "this" {
 }
 
 resource "aws_instance" "this" {
-  ami           = var.ami_id != null ? var.ami_id : data.aws_ssm_parameter.ubuntu.value
+  ami           = var.ami_id
   instance_type = var.instance_type
 
   associate_public_ip_address = true
