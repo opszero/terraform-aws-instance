@@ -98,3 +98,16 @@ variable "efs_mounts" {
   #}
   #}
 }
+
+variable "instance_profiles" {
+  default = {}
+  #"test_profile1" = {
+  #  role                = "test_role1",
+  #  assume_role_service = "ec2.amazonaws.com"
+  #},
+  #"test_profile2" = {
+  #  role                = "test_role2",
+  #  assume_role_service = "s3.amazonaws.com"
+  #}
+}
+
