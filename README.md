@@ -66,6 +66,7 @@ terraform destroy -auto-approve
 | <a name="input_ami_id"></a> [ami\_id](#input\_ami\_id) | The AMI ID of the bastion host | `string` | `null` | no |
 | <a name="input_efs_mounts"></a> [efs\_mounts](#input\_efs\_mounts) | EFS multiple mounts | `map` | `{}` | no |
 | <a name="input_ingress_cidrs"></a> [ingress\_cidrs](#input\_ingress\_cidrs) | Configuration block for ingress rules | `any` | n/a | yes |
+| <a name="input_instance_profiles"></a> [instance\_profiles](#input\_instance\_profiles) | n/a | `map` | `{}` | no |
 | <a name="input_instance_type"></a> [instance\_type](#input\_instance\_type) | EC2 Instance Type of the bastion host | `string` | `"t3.micro"` | no |
 | <a name="input_name"></a> [name](#input\_name) | The name of the bastion host | `string` | n/a | yes |
 | <a name="input_security_group_ids"></a> [security\_group\_ids](#input\_security\_group\_ids) | A list of security group names to associate with. | `list(any)` | `[]` | no |
@@ -85,6 +86,8 @@ terraform destroy -auto-approve
 |------|------|
 | [aws_cloudwatch_metric_alarm.aws_bastion_cpu_threshold](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudwatch_metric_alarm) | resource |
 | [aws_eip.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/eip) | resource |
+| [aws_iam_instance_profile.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_instance_profile) | resource |
+| [aws_iam_role.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role) | resource |
 | [aws_instance.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/instance) | resource |
 | [aws_security_group.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group) | resource |
 | [aws_security_group_rule.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group_rule) | resource |
