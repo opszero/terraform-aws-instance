@@ -72,3 +72,37 @@ resource "aws_cloudwatch_metric_alarm" "aws_bastion_cpu_threshold" {
     InstanceId = aws_instance.this.id
   }
 }
+
+resource "aws_iam_instance_profile" "this" {
+  for_each = var.instance_profiles
+
+  name = each.key
+  role = each.value.role
+
+  depends_on = [
+    aws_iam_role.this
+  ]
+}
+
+resource "aws_iam_role" "this" {
+  for_each = var.instance_profiles
+
+  name = each.value.role
+  path = "/"
+
+  assume_role_policy = <<EOF
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Action": "sts:AssumeRole",
+            "Principal": {
+               "Service": "${each.value.assume_role_service}"
+            },
+            "Effect": "Allow",
+            "Sid": ""
+        }
+    ]
+}
+EOF
+}
