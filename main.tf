@@ -77,7 +77,7 @@ resource "aws_cloudwatch_metric_alarm" "aws_bastion_cpu_threshold" {
 resource "aws_iam_instance_profile" "this" {
   count = var.instance_profile != null ? 1 : 0
   name  = "${var.instance_profile.role_name}-profile"
-  role  = aws_iam_role.this.name
+  role  = aws_iam_role.this[0].name
 
   depends_on = [
     aws_iam_role.this
