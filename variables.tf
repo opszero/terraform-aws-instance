@@ -111,3 +111,8 @@ variable "instance_profiles" {
   #}
 }
 
+
+variable "instance_profile" {
+  default = {}
+  description = "Instance profile role ARN for instances"
+}
