@@ -41,7 +41,7 @@ resource "aws_instance" "this" {
   associate_public_ip_address = true
   subnet_id                   = var.subnet_id
   vpc_security_group_ids      = concat(var.security_group_ids, [aws_security_group.this.id])
-  iam_instance_profile = var.instance_profile != null ? aws_iam_instance_profile.this.arn : null
+  iam_instance_profile        = var.instance_profile != null ? aws_iam_instance_profile.this[0].arn : null
 
   monitoring = true
 

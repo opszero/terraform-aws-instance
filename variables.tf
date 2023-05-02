@@ -101,15 +101,15 @@ variable "efs_mounts" {
 
 variable "instance_profile" {
   type = object({
-    role_name = string
+    role_name           = string
     assume_role_service = string
-    policy_arns = list(string)
+    policy_arns         = list(string)
   })
   default = null
-#  default = {
-#    role_name = "test_role1"
-#    assume_role_service = "ec2.amazonaws.com"
-#    policy_arns = ["testarn1", "testarn2"]
-#  }
+  #  default = {
+  #    role_name = "test_role1"
+  #    assume_role_service = "ec2.amazonaws.com"
+  #    policy_arns = ["testarn1", "testarn2"]
+  #  }
 }
 
