@@ -99,20 +99,17 @@ variable "efs_mounts" {
   #}
 }
 
-variable "instance_profiles" {
-  default = {}
-  #"test_profile1" = {
-  #  role                = "test_role1",
-  #  assume_role_service = "ec2.amazonaws.com"
-  #},
-  #"test_profile2" = {
-  #  role                = "test_role2",
-  #  assume_role_service = "s3.amazonaws.com"
-  #}
-}
-
-
 variable "instance_profile" {
-  default = {}
-  description = "Instance profile role ARN for instances"
+  type = object({
+    role_name = string
+    assume_role_service = string
+    policy_arns = list(string)
+  })
+  default = null
+#  default = {
+#    role_name = "test_role1"
+#    assume_role_service = "ec2.amazonaws.com"
+#    policy_arns = ["testarn1", "testarn2"]
+#  }
 }
+

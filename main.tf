@@ -41,7 +41,7 @@ resource "aws_instance" "this" {
   associate_public_ip_address = true
   subnet_id                   = var.subnet_id
   vpc_security_group_ids      = concat(var.security_group_ids, [aws_security_group.this.id])
-  iam_instance_profile        = var.instance_profile != "" ? var.instance_profile : null
+  iam_instance_profile = var.instance_profile != null ? aws_iam_instance_profile.this.arn : null
 
   monitoring = true
 
@@ -75,10 +75,9 @@ resource "aws_cloudwatch_metric_alarm" "aws_bastion_cpu_threshold" {
 }
 
 resource "aws_iam_instance_profile" "this" {
-  for_each = var.instance_profiles
-
-  name = each.key
-  role = each.value.role
+  count = var.instance_profile != null ? 1 : 0
+  name  = "${var.instance_profile.role_name}-profile"
+  role  = aws_iam_role.this.name
 
   depends_on = [
     aws_iam_role.this
@@ -86,24 +85,26 @@ resource "aws_iam_instance_profile" "this" {
 }
 
 resource "aws_iam_role" "this" {
-  for_each = var.instance_profiles
+  count = var.instance_profile != null ? 1 : 0
+  name  = var.instance_profile.role_name
+  path  = "/"
 
-  name = each.value.role
-  path = "/"
-
-  assume_role_policy = <<EOF
-{
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Action": "sts:AssumeRole",
-            "Principal": {
-               "Service": "${each.value.assume_role_service}"
-            },
-            "Effect": "Allow",
-            "Sid": ""
-        }
-    ]
+  assume_role_policy = jsonencode({
+    "Version" : "2012-10-17",
+    "Statement" : [{
+      "Action" : "sts:AssumeRole",
+      "Principal" : {
+        "Service" : var.instance_profile.assume_role_service
+      },
+      "Effect" : "Allow",
+      "Sid" : ""
+    }]
+  })
 }
-EOF
+
+resource "aws_iam_role_policy_attachment" "this" {
+  count = length(var.instance_profile.policy_arns) > 0 ? length(var.instance_profile.policy_arns) : 0
+
+  policy_arn = var.instance_profile.policy_arns[count.index]
+  role       = aws_iam_role.this.name
 }
