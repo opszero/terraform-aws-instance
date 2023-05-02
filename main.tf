@@ -106,5 +106,5 @@ resource "aws_iam_role_policy_attachment" "this" {
   count = length(var.instance_profile.policy_arns) > 0 ? length(var.instance_profile.policy_arns) : 0
 
   policy_arn = var.instance_profile.policy_arns[count.index]
-  role       = aws_iam_role.this.name
+  role       = aws_iam_role.this[0].name
 }
