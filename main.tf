@@ -27,10 +27,10 @@ resource "aws_security_group_rule" "this" {
   for_each = toset(var.ingress_cidrs)
 
   cidr_blocks       = [each.key]
-  from_port         = 22
+  from_port         = var.instance_security_group_ports[0]
   protocol          = "tcp"
   security_group_id = aws_security_group.this.id
-  to_port           = 22
+  to_port           = var.instance_security_group_ports[count.index % length(var.instance_security_group_ports)]
   type              = "ingress"
 }
 

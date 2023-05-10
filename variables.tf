@@ -113,3 +113,7 @@ variable "instance_profile" {
   #  }
 }
 
+variable "instance_security_group_ports" {
+  default = [22]
+  description = "Set allow ports for the EC2 instance"
+}
