@@ -38,7 +38,7 @@ variable "security_group_ids" {
 }
 
 variable "ubuntu_version" {
-  default     = "20.04"
+  default     = "24.04"
   description = "Ubuntu Server Version"
   type        = string
 }
