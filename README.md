@@ -44,15 +44,6 @@ terraform apply -auto-approve
 ```sh
 terraform destroy -auto-approve
 ```
-# Pro Support
-
-<a href="https://www.opszero.com"><img src="https://media.opszero.com/insights/brands/logo/2023/04/26/02/04/12/opsZero_logo.svg" width="300px"/></a>
-
-[opsZero provides support](https://www.opszero.com/devops) for our modules including:
-
--   Slack & Email support
--   One on One Video Calls
--   Implementation Guidance
 ## Providers
 
 | Name | Version |
@@ -73,7 +64,7 @@ terraform destroy -auto-approve
 | <a name="input_ssh_keys"></a> [ssh\_keys](#input\_ssh\_keys) | SSH public keys to add to the image | `list(any)` | `[]` | no |
 | <a name="input_subnet_id"></a> [subnet\_id](#input\_subnet\_id) | The VPC subnet ID to launch in EC2 bastion host | `string` | n/a | yes |
 | <a name="input_tags"></a> [tags](#input\_tags) | A map of tags to assign to the resource | `map(any)` | `{}` | no |
-| <a name="input_ubuntu_version"></a> [ubuntu\_version](#input\_ubuntu\_version) | Ubuntu Server Version | `string` | `"20.04"` | no |
+| <a name="input_ubuntu_version"></a> [ubuntu\_version](#input\_ubuntu\_version) | Ubuntu Server Version | `string` | `"24.04"` | no |
 | <a name="input_user_data"></a> [user\_data](#input\_user\_data) | User data to provide when launching the instance | `string` | `""` | no |
 | <a name="input_user_data_replace_on_change"></a> [user\_data\_replace\_on\_change](#input\_user\_data\_replace\_on\_change) | To recreate the instance when user\_data is changed | `bool` | `false` | no |
 | <a name="input_userdata"></a> [userdata](#input\_userdata) | User data to provide when launching the instance | `string` | `""` | no |
@@ -98,5 +89,37 @@ terraform destroy -auto-approve
 
 | Name | Description |
 |------|-------------|
+| <a name="output_instance_id"></a> [instance\_id](#output\_instance\_id) | n/a |
 | <a name="output_public_ip"></a> [public\_ip](#output\_public\_ip) | n/a |
+# 🚀 Built by opsZero!
+
+<a href="https://opszero.com"><img src="https://opszero.com/wp-content/uploads/2024/07/opsZero_logo_svg.svg" width="300px"/></a>
+
+Since 2016 [opsZero](https://opszero.com) has been providing Kubernetes
+expertise to companies of all sizes on any Cloud. With a focus on AI and
+Compliance we can say we seen it all whether SOC2, HIPAA, PCI-DSS, ITAR,
+FedRAMP, CMMC we have you and your customers covered.
+
+We provide support to organizations in the following ways:
+
+- [Modernize or Migrate to Kubernetes](https://opszero.com/solutions/modernization/)
+- [Cloud Infrastructure with Kubernetes on AWS, Azure, Google Cloud, or Bare Metal](https://opszero.com/solutions/cloud-infrastructure/)
+- [Building AI and Data Pipelines on Kubernetes](https://opszero.com/solutions/ai/)
+- [Optimizing Existing Kubernetes Workloads](https://opszero.com/solutions/optimized-workloads/)
+
+We do this with a high-touch support model where you:
+
+- Get access to us on Slack, Microsoft Teams or Email
+- Get 24/7 coverage of your infrastructure
+- Get an accelerated migration to Kubernetes
+
+Please [schedule a call](https://calendly.com/opszero-llc/discovery) if you need support.
+
+<br/><br/>
+
+<div style="display: block">
+  <img src="https://opszero.com/wp-content/uploads/2024/07/aws-advanced.png" width="150px" />
+  <img src="https://opszero.com/wp-content/uploads/2024/07/AWS-public-sector.png" width="150px" />
+  <img src="https://opszero.com/wp-content/uploads/2024/07/AWS-eks.png" width="150px" />
+</div>
 <!-- END_TF_DOCS -->
