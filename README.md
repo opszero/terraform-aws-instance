@@ -57,7 +57,7 @@ terraform destroy -auto-approve
 | <a name="input_ami_id"></a> [ami\_id](#input\_ami\_id) | The AMI ID of the bastion host | `string` | `null` | no |
 | <a name="input_efs_mounts"></a> [efs\_mounts](#input\_efs\_mounts) | EFS multiple mounts | `map` | `{}` | no |
 | <a name="input_ingress_cidrs"></a> [ingress\_cidrs](#input\_ingress\_cidrs) | Configuration block for ingress rules | `any` | n/a | yes |
-| <a name="input_instance_profile"></a> [instance\_profile](#input\_instance\_profile) | n/a | <pre>object({<br>    role_name           = string<br>    assume_role_service = string<br>    policy_arns         = list(string)<br>  })</pre> | `null` | no |
+| <a name="input_instance_profile"></a> [instance\_profile](#input\_instance\_profile) | n/a | <pre>object({<br/>    role_name           = string<br/>    assume_role_service = string<br/>    policy_arns         = list(string)<br/>  })</pre> | `null` | no |
 | <a name="input_instance_type"></a> [instance\_type](#input\_instance\_type) | EC2 Instance Type of the bastion host | `string` | `"t3.micro"` | no |
 | <a name="input_name"></a> [name](#input\_name) | The name of the bastion host | `string` | n/a | yes |
 | <a name="input_security_group_ids"></a> [security\_group\_ids](#input\_security\_group\_ids) | A list of security group names to associate with. | `list(any)` | `[]` | no |
@@ -68,7 +68,7 @@ terraform destroy -auto-approve
 | <a name="input_user_data"></a> [user\_data](#input\_user\_data) | User data to provide when launching the instance | `string` | `""` | no |
 | <a name="input_user_data_replace_on_change"></a> [user\_data\_replace\_on\_change](#input\_user\_data\_replace\_on\_change) | To recreate the instance when user\_data is changed | `bool` | `false` | no |
 | <a name="input_userdata"></a> [userdata](#input\_userdata) | User data to provide when launching the instance | `string` | `""` | no |
-| <a name="input_users"></a> [users](#input\_users) | Custom user accounts of the instance | `map` | <pre>{<br>  "retool": {<br>    "ssh-keys": []<br>  }<br>}</pre> | no |
+| <a name="input_users"></a> [users](#input\_users) | Custom user accounts of the instance | `map` | <pre>{<br/>  "retool": {<br/>    "ssh-keys": []<br/>  }<br/>}</pre> | no |
 | <a name="input_volume_size"></a> [volume\_size](#input\_volume\_size) | Size of the volume in gibibytes (GiB) | `number` | `20` | no |
 | <a name="input_vpc_id"></a> [vpc\_id](#input\_vpc\_id) | The VPC ID to create security group for bastion host | `string` | n/a | yes |
 ## Resources
