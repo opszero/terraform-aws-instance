@@ -91,11 +91,11 @@ terraform destroy -auto-approve
 |------|-------------|
 | <a name="output_instance_id"></a> [instance\_id](#output\_instance\_id) | n/a |
 | <a name="output_public_ip"></a> [public\_ip](#output\_public\_ip) | n/a |
-# 🚀 Built by opsZero!
+# ðŸš€ Built by opsZero!
 
 <a href="https://opszero.com"><img src="https://opszero.com/img/common/opsZero-Logo-Large.webp" width="300px"/></a>
 
-[opsZero](https://opszero.com) provides software and consulting for Cloud + AI. With our decade plus of experience scaling some of the world’s most innovative companies we have developed deep expertise in Kubernetes, DevOps, FinOps, and Compliance.
+[opsZero](https://opszero.com) provides software and consulting for Cloud + AI. With our decade plus of experience scaling some of the worldâ€™s most innovative companies we have developed deep expertise in Kubernetes, DevOps, FinOps, and Compliance.
 
 Our software and consulting solutions enable organizations to:
 
